@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Activity - Plus and Ticks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Brand Colors: 
+           #1f2a52 (Midnight Blue)
+           #00bec7 (Teal)
+           #d2f0f0 (Light Aqua)
+           #abb5bf (Slate Grey)
+        */
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1f2a52;
+            padding: 2rem 1rem;
+            margin: 0;
+        }
+
+        .activity-card {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(31, 42, 82, 0.1);
+            overflow: hidden;
+            border: 1px solid #d2f0f0;
+        }
+
+        .header-bar {
+            background-color: #1f2a52;
+            padding: 1.5rem 2.5rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 2.5rem;
+        }
+
+        /* Accordion Header */
+        .section-header {
+            background-color: #1f2a52;
+            color: #ffffff;
+            padding: 1.25rem 1.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+        }
+
+        .section-header:hover {
+            background-color: #00bec7; /* Teal Hover */
+        }
+
+        .section-header.active {
+            background-color: #00bec7; /* Active Teal */
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-bottom: 0;
+        }
+
+        /* Section Content */
+        .section-content {
+            background-color: #ffffff;
+            border: 1px solid #d2f0f0;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.25rem;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* List Items with Brand Ticks (✓) */
+        .section-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .section-content li {
+            margin-bottom: 0.75rem;
+            padding-left: 2rem;
+            position: relative;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        .section-content li::before {
+            content: '✓';
+            color: #00bec7; /* Brand Teal Ticks */
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .sub-category {
+            font-weight: 700;
+            color: #1f2a52;
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #d2f0f0;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Toggle Icon (+) */
+        .toggle-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+            font-weight: 400;
+        }
+
+        .section-header.active .toggle-icon {
+            transform: rotate(45deg); /* Turns + into a slight diagonal or close state */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="activity-card">
+        <!-- Header -->
+        <div class="header-bar">
+            <h1 class="text-2xl font-bold uppercase tracking-wide">Accordion_Plus signs</h1>
+        </div>
+
+        <div class="main-content">
+            
+            <!-- Section 1 -->
+            <div class="section-header" onclick="toggleSection(this)">
+                Lorem Ipsum
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <ul>
+                    <li><strong>Consectetur adipiscing elit:</strong> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                    <li><strong>Ut enim ad minim veniam:</strong> Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                </ul>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section-header" onclick="toggleSection(this)">
+                Lorem Ipsum
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <span class="sub-category">Topic 1</span>
+                <ul>
+                    <li><strong>Excepteur sint occaecat:</strong> Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                    <li><strong>Sed ut perspiciatis:</strong> Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</li>
+                    <li><strong>Nemo enim ipsam:</strong> Voluptatem quia voluptas sit aspernatur aut odit aut fugit.</li>
+                </ul>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section-header" onclick="toggleSection(this)">
+                Lorem Ipsum
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <span class="sub-category">Topic 2</span>
+                <ul>
+                    <li><strong>Similique sunt in culpa:</strong> Qui officia deserunt mollit anim id est laborum et dolorum fuga.</li>
+                    <li><strong>Et harum quidem:</strong> Rerum facilis est et expedita distinctio nam libero tempore.</li>
+                    <li><strong>Cum soluta nobis:</strong> Est eligendi optio cumque nihil impedit quo minus id quod maxime placeat.</li>
+                </ul>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section-header" onclick="toggleSection(this)">
+                Lorem Ipsum
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content">
+                <span class="sub-category">Topic 3</span>
+                <ul>
+                    <li><strong>Itaque earum rerum:</strong> Hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur.</li>
+                    <li><strong>Perferendis doloribus:</strong> Aspiores repellat hanc ego cum teneam sententiam, quid est cur verear.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            
+            // Close all other sections
+            document.querySelectorAll('.section-content').forEach(otherContent => {
+                if (otherContent !== content && otherContent.style.display === 'block') {
+                    otherContent.style.display = 'none';
+                    otherContent.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current section
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                header.classList.remove('active');
+            } else {
+                content.style.display = 'block';
+                header.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
